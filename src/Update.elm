@@ -12,7 +12,7 @@ update msg model =
         NextGame ->
             ( { model | game = NowPlaying }, Cmd.none )
 
-        SelectHand hand ->
+        SelectYourHand hand ->
             ( { model | you = hand, game = Over }, Random.generate SelectEnemyHand (Random.int 0 2) )
 
         SelectEnemyHand num ->

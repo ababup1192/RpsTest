@@ -52,7 +52,7 @@ hands =
             (\hand ->
                 input
                     [ type_ "button"
-                    , onClick <| SelectHand hand
+                    , onClick <| SelectYourHand hand
                     , value <| toString hand
                     ]
                     []
