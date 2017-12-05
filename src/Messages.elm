@@ -1,10 +1,8 @@
 module Messages exposing (..)
 
-import Time exposing (Time)
+import Rps exposing (Hand)
 
--- Message
+
 type Msg
-    = Left String 
-    | Right String
-    | Tick Time
-
+    = NextGame
+    | SelectHand Hand

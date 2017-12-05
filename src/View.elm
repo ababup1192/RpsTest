@@ -2,26 +2,35 @@ module View exposing (view)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onInput)
-
+import Html.Events exposing (onClick)
 import Messages exposing (..)
-import Models exposing (Model)
-import Operation exposing (..)
+import Models exposing (Model, Game(..))
+import Rps exposing (Hand(..))
 
 
--- View
 view : Model -> Html Msg
-view ( { left, right, count } as model) =
-    let
-        leftText = toString left
-        rightText = toString right
-        op  = toOpText <| toOp <| count
-        res = toString <| calcNum model
-    in
-        div [ class "expression" ] 
-        [ input [ type_ "number", value leftText, onInput Left   ] [],
-          p [] [ text op ],
-          input [ type_ "number", value rightText, onInput Right ] [],
-          p [] [ text res ]
-        ]
+view { game } =
+    case game of
+        Start ->
+            input
+                [ type_ "button"
+                , onClick NextGame
+                , value "ゲーム開始"
+                ]
+                []
 
+        NowPlaying ->
+            input
+                [ type_ "button"
+                , onClick <| SelectHand Rock
+                , value "Rock"
+                ]
+                []
+
+        Over ->
+            input
+                [ type_ "button"
+                , onClick NextGame
+                , value "次のゲームへ"
+                ]
+                []
