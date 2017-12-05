@@ -1,4 +1,4 @@
-module Rps exposing (Result(..), Hand(..), fight)
+module Rps exposing (Result(..), Hand(..), fight, toHand)
 
 import Debug
 
@@ -19,13 +19,13 @@ fight : Hand -> Hand -> Result
 fight you enemy =
     let
         r =
-            ((handNum you - handNum enemy) + 3) % 3
+            ((fromHand you - fromHand enemy) + 3) % 3
     in
         result r
 
 
-handNum : Hand -> Int
-handNum hand =
+fromHand : Hand -> Int
+fromHand hand =
     case hand of
         Rock ->
             0
@@ -35,6 +35,22 @@ handNum hand =
 
         Paper ->
             2
+
+
+toHand : Int -> Hand
+toHand num =
+    case num of
+        0 ->
+            Rock
+
+        1 ->
+            Scissors
+
+        2 ->
+            Paper
+
+        _ ->
+            Debug.crash "Illegal hand"
 
 
 result : Int -> Result

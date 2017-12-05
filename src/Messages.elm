@@ -6,3 +6,4 @@ import Rps exposing (Hand)
 type Msg
     = NextGame
     | SelectHand Hand
+    | SelectEnemyHand Int

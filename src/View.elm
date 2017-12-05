@@ -41,6 +41,9 @@ view { game, you, enemy } =
                         []
                     ]
 
+        _ ->
+            Debug.crash "Illegal state"
+
 
 hands : List (Html Msg)
 hands =

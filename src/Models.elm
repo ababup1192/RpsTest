@@ -6,6 +6,7 @@ import Rps exposing (..)
 type Game
     = Start
     | NowPlaying
+    | EnemyHand Hand
     | Over
 
 

@@ -2,6 +2,8 @@ module Update exposing (..)
 
 import Models exposing (Model, Game(..))
 import Messages exposing (..)
+import Random
+import Rps
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -11,4 +13,7 @@ update msg model =
             ( { model | game = NowPlaying }, Cmd.none )
 
         SelectHand hand ->
-            ( { model | you = hand, game = Over }, Cmd.none )
+            ( { model | you = hand, game = Over }, Random.generate SelectEnemyHand (Random.int 0 2) )
+
+        SelectEnemyHand num ->
+            ( { model | enemy = Rps.toHand num }, Cmd.none )
