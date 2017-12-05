@@ -1,0 +1,12 @@
+@startuml
+
+[*] -> Start 
+Start -> NowPlaying : NG
+Over -> NowPlaying : NG
+
+state NowPlaying {
+  [*] -> EnemyHand : SYH
+  EnemyHand -> Over : SEH
+}
+
+@enduml

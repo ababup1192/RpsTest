@@ -13,7 +13,7 @@ update msg model =
             ( { model | game = NowPlaying }, Cmd.none )
 
         SelectYourHand hand ->
-            ( { model | you = hand, game = Over }, Random.generate SelectEnemyHand (Random.int 0 2) )
+            ( { model | you = hand }, Random.generate SelectEnemyHand (Random.int 0 2) )
 
         SelectEnemyHand num ->
-            ( { model | enemy = Rps.toHand num }, Cmd.none )
+            ( { model | enemy = Rps.toHand num, game = Over }, Cmd.none )
